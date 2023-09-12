@@ -1,6 +1,6 @@
 import {connect} from "mongoose";
-//import dotEnv from 'dotenv';
-//dotEnv.config({path: './.env'})
+import dotEnv from 'dotenv';
+dotEnv.config({path: './.env'})
 
 let url = process.env.MONGO_URL_SERVER
 

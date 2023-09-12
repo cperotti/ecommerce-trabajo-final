@@ -26,7 +26,6 @@ class ProductsController {
     
         }catch(error){
             req.logger.error(error)
-            //console.log(error)
         }
     }
     
@@ -41,24 +40,9 @@ class ProductsController {
             })
         }catch(error){
             req.logger.error(error)
-            //console.log(error)
         }
     }
-    
-    //descomentar para ver error que me tira cuando pruebo cargarlo desde postman como form-data
-//error => ENOENT: no such file or directory, open 'C:\C:\Users\Usuario\Downloads\CARO\cursoBackendCoder\trabajofinal\src\public\uploads\6a30b2fece22d38d8d219d3dbdfc846d.jpg'
 
-// router.post('/', uploader.array('thumbnail'), (req, res)=>{
-//     let product = req.body
-//     let files = req.files
-
-//     console.log(files, product)
-
-//     products.addProduct(product).then((response)=>{
-//         res.send(response)
-//     })
-//     .catch((error)=>console.log(error))
-// })
     createProduct = async(req, res, next)=>{
         try{
             const newProduct = req.body;
@@ -87,7 +71,6 @@ class ProductsController {
         }catch(error){
             req.logger.error(error)
             next(error)
-            //console.log(error)
         }
     }
     
@@ -103,7 +86,6 @@ class ProductsController {
             })
         }catch (error){
             req.logger.error(error)
-            //console.log(error)
         }
     }
     
@@ -118,7 +100,6 @@ class ProductsController {
             })
         } catch (error) {
             req.logger.error(error)
-            //console.log(error)
         }
     }
 }

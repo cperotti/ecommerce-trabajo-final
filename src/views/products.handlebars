@@ -4,6 +4,9 @@
              {{#if isUser}}
                 <a class="me-3" href={{linkCarrito}}> Ir al carrito</a>
             {{/if}}
+            {{#if isAdmin}}
+                <a class="me-3" href='/views/users'> Ver usuarios</a>
+            {{/if}}
             <form action="/api/session/logout" method="get">
                 <button type="submit" class="btn btn-primary" >Cerrar sesión</button>
             </form>

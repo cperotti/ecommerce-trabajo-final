@@ -9,7 +9,7 @@ import session from 'express-session';
 import pkg from 'connect-mongo';
 import { initPassport,initializePassport, initPassportGitHub } from './configServer/passport.config.js';
 import passport from 'passport';
-//import dotEnv from 'dotenv';
+import dotEnv from 'dotenv';
 import { errorHandler } from './middlewares/error.middleware.js';
 import { addLoggerDev, addLoggerProd } from './configServer/logger.js';
 import { commander } from './utils/commander.js';
@@ -19,7 +19,7 @@ import cors from 'cors'
 
 const {mode} = commander.opts()
 
-//dotEnv.config()
+dotEnv.config()
 
 const {create} = pkg;
 

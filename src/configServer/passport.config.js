@@ -4,8 +4,8 @@ import UserManagerMongo from '../dao/mongo/user.mongo.js'
 import { createHash, isValidPassword } from '../utils.js';
 import GithubStrategy from 'passport-github2'
 import passportJWT from 'passport-jwt';
-//import dotEnv from 'dotenv';
-//dotEnv.config()
+import dotEnv from 'dotenv';
+dotEnv.config()
 
 const userMongo  =  new UserManagerMongo();
 

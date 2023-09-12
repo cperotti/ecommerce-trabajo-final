@@ -55,6 +55,7 @@ class ViewsController {
                 nextLink: hasNextPage ? `/views/products?page=${nextPage}&limit=${limit?limit:10}${sort ?`&sort=${sort}`:''}${category ?`&category=${category}`:''}${status ?`&status=${status}`:''}`: null,
                 linkCarrito:`/views/carts/${cart.cartId}`,
                 isUser: req.user.role === 'user',
+                isAdmin:req.user.role === 'admin',
             })
             
         } catch (error) {
