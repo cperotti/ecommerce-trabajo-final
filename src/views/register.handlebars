@@ -1,0 +1,48 @@
+<div class="d-flex flex-column justify-content-center align-items-center ">
+  <div class="card w-50">
+    <div class="card-header">
+      Registrate
+    </div>
+    <div class="card-body">
+      <form action="/api/session/register" method="post">
+        <div class="mb-3 d-flex flex-row ">
+            <div class="w-50 me-1">
+                <label for="first_name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="first_name" id="first_name">
+            </div>
+            <div class="w-50">
+                <label for="last_name" class="form-label">Apellido</label>
+                <input type="text" class="form-control" name="last_name" id="last_name">
+            </div>
+        </div>
+        <div class="mb-3 d-flex flex-row">
+          <div class="w-50 me-1">
+              <label for="date_of_birth" class="form-label">Fecha de nacimiento</label>
+              <input type="date" class="form-control" name="date_of_birth" id="date_of_birth">
+          </div>
+          <div class="w-50">
+            <label for="role" class="form-label">Rol</label>
+            <select required id="role" name="role" class="form-select">
+                <option selected value="user">Usuario</option>
+                <option value="admin">Administrador</option>
+            </select>
+          </div>
+        </div>
+          <div class="mb-3 d-flex flex-row">
+            <div class="w-50 me-1">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+            <div class="w-50">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="text" class="form-control" name="password" id="password">
+            </div>
+          </div>
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-link" href='/views/login'>Volver al login</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+      </form>
+    </div>
+  </div>
+</div>

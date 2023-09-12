@@ -1,0 +1,158 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Los productos fueron obtenidos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "500":
+          description: Error interno del server, usualmente generado por una query defectuosa  
+    post:
+      summary: Crea un nuevo producto
+      tags:
+        - Productos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateProduct'
+      responses:
+        "201":
+          description: El producto fue creado correctamente
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto por su pid
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto a solicitar
+          schema:
+            $type: String 
+      responses:
+        "200":
+          description: El producto fue obtenido correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Product'
+        "500":
+          description: Error interno del server, usualmente generado por una query defectuosa  
+    put: 
+      summary: Se actualiza un producto en base a un pid
+      tags: 
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto a actualizar
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/updateProduct'
+    delete:
+      summary: Se elimina un producto en base a un pid
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto a eliminar
+          schema:
+            $type: String
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: id autogenerado por Mongo
+        title:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripción del producto
+        thumbnail:
+          type: string
+          description: Imagen del producto
+        price:
+          type: number
+          description: Precio del producto
+        stock:
+          type: number
+          description: Cantidad del producto
+        category:
+          type: string
+          description: Categoría del producto
+        code:
+          type: string
+          description: Código del producto
+        status:
+          type: boolean
+          description: Estado del producto
+      example:
+        _id: ObjectId('xdfgcgvhbjn.assdf678nj')
+        title: Papas fritas
+        description: Papas fritas tradicionales
+        thumbnail: sin imagen
+        price: 618
+        stock: 20
+        code: "001"
+        category: snack
+        status: true
+  requestBodies:
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Nombre del producto
+        description:
+          type: string
+          description: Descripción del producto
+        thumbnail:
+          type: string
+          description: Imagen del producto
+        price:
+          type: number
+          description: Precio del producto
+        stock:
+          type: number
+          description: Cantidad del producto
+        category:
+          type: string
+          description: Categoría del producto
+        code:
+          type: string
+          description: Código del producto
+        status:
+          type: boolean
+          description: Estado del producto
+      example:
+        title: Zapallitos
+        description: Zapallitos verdes redondos por kilo
+        thumbnail: sin imagen
+        price: 1039
+        stock: 48
+        code: "015"
+        category: verduras
+        status: true

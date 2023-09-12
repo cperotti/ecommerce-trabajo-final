@@ -1,0 +1,43 @@
+<div>
+    <div class="p-2">
+        <div class="d-flex justify-content-end">
+             {{#if isUser}}
+                <a class="me-3" href={{linkCarrito}}> Ir al carrito</a>
+            {{/if}}
+            <form action="/api/session/logout" method="get">
+                <button type="submit" class="btn btn-primary" >Cerrar sesión</button>
+            </form>
+        </div>
+        <div class="mb-5">
+            <h3 class="text-center">¡Bienvenid@ {{userData.first_name}} {{userData.last_name}}!</h1>
+            <p class="text-center"><strong>Email:</strong>{{userData.email}}</p>
+            <p class="text-center"><strong>Rol:</strong>{{userData.role}}</p>
+        </div>
+        <h4 class="text-center">Listado de productos</h2>
+        <div class="row justify-content-center row-cols-5 m-3">
+            {{#each payload}}
+                    <div class="col card m-1" >
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                            <p class="card-text">{{this.description}}</p>
+                            <h5>${{this.price}}</h5>
+                            <div class="d-flex justify-content-between">
+                                <a href="/views/products/{{this._id}}">ver detalle</a>
+                                <Button type="button" class="btn btn-primary btn-sm">Agregar al carrito</Button>
+                            </div>
+                        </div>
+                    </div>
+            {{/each}}
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {{#if hasPrevPage}}
+                    <li class="page-item"><a class="page-link" href={{prevLink}}>Anterior</a></li>
+                {{/if}}
+                {{#if hasNextPage}}
+                    <li class="page-item"><a class="page-link" href={{nextLink}}>Siguiente</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </div>
+</div>

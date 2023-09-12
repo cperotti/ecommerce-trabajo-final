@@ -1,0 +1,36 @@
+<div class="p-3">
+  <div class="d-flex justify-content-between">
+    <a href={{linkProductos}}>Volver a listado de productos</a>
+    <form action="/api/session/logout" method="get">
+      <button type="submit" class="btn btn-primary" >Cerrar sesión</button>
+    </form>
+  </div>
+    <h2 class="text-center m-2">Información carrito</h5>
+    {{#if hasCart}}
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+       {{#each cart.products}} 
+            <tr>
+                <td>{{this.product.title}}</td>
+                <td>{{this.product.description}}</td>
+                <td>{{this.product.price}}</td>
+                <td>{{this.quantity}}</td>
+            </tr>
+       {{/each}}
+  </tbody>
+</table>
+<div class="d-flex justify-content-end m-5">
+  <button type="button" class="btn btn-primary">Finalizar compra</button>
+</div>
+{{else}}
+    <p class="text-center m-4">Aún no hay productos cargados en el carrito</p>
+{{/if}}
+</div>
