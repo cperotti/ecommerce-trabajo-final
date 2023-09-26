@@ -10,19 +10,12 @@ const sessionController = new SessionController()
 const router = Router();
 
 router.post('/login', sessionController.loginUser)
-
 router.get('/faillogin', sessionController.failLogin)
-
 router.post('/register', sessionController.registerUser)
-
 router.get('/failregister', sessionController.failRegister)
-
 router.get('/github', passport.authenticate('github', {scope: ['user:email']}),()=>{})
-
 router.get('/githubcallback', passport.authenticate('github', {failureRedirect: '/views/login'}),sessionController.githubCallback)
-
 router.get('/logout', passportAuth('jwt'),sessionController.logoutUser)
-
 router.get('/current', 
         passportAuth('jwt'), 
         authorizaton('user'),

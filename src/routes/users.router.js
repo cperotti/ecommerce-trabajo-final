@@ -7,8 +7,8 @@ const router = Router();
 
 router.get('/', passportAuth('jwt'), usersController.getUsers);
 router.get('/:uid', passportAuth('jwt'), usersController.getUserById);
-router.put('/:uid', passportAuth('jwt'), usersController.updateUser);
-router.delete('/:uid', passportAuth('jwt'),usersController.deleteUser);
-router.delete('/', passportAuth('jwt'), usersController.deleteInactiveUsers);
+router.put('/:uid', passportAuth('jwt'), authorizaton('admin'), usersController.updateUser);
+router.delete('/:uid', passportAuth('jwt'),authorizaton('admin'),usersController.deleteUser);
+router.delete('/', passportAuth('jwt'),authorizaton('admin'), usersController.deleteInactiveUsers);
 
 export default router;
