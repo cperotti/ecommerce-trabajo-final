@@ -1,5 +1,5 @@
 class MessageDto {
-    constructor(message){ //reveer como viene la data
+    constructor(message){
         this.user = message.user,
         this.message = message.message
     }

@@ -13,7 +13,6 @@ export default class ProductManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error)
         }
     }
 
@@ -38,7 +37,6 @@ export default class ProductManager {
         }
         catch (error) {
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -50,7 +48,6 @@ export default class ProductManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -67,7 +64,6 @@ export default class ProductManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -93,7 +89,6 @@ export default class ProductManager {
         }
         catch (error) {
             req.logger.error(error)
-            //console.log(error)
         }
     }
 
@@ -113,7 +108,6 @@ export default class ProductManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error);
         }
     }
 

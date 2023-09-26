@@ -1,5 +1,10 @@
 import express from 'express';
 import {configServer} from './configServer/configServer.js';
+import { initializePassport, initPassportGitHub } from './configServer/passport.config.js';
+import { errorHandler } from './middlewares/error.middleware.js';
+import { logger } from './utils/logger.js';
+// import { addLoggerDev, addLoggerProd } from './configServer/logger.js';
+// import { commander } from './utils/commander.js';
 import routerServer from './routes/index.js';
 import __dirname from "./utils.js";
 import handlebars from 'express-handlebars';
@@ -7,17 +12,14 @@ import cookieParser from 'cookie-parser';
 import FileStore from 'session-file-store'
 import session from 'express-session';
 import pkg from 'connect-mongo';
-import { initPassport,initializePassport, initPassportGitHub } from './configServer/passport.config.js';
 import passport from 'passport';
 import dotEnv from 'dotenv';
-import { errorHandler } from './middlewares/error.middleware.js';
-import { addLoggerDev, addLoggerProd } from './configServer/logger.js';
-import { commander } from './utils/commander.js';
-import swaggerJSDoc from 'swagger-jsdoc';
+// import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
 import cors from 'cors'
+import { specs } from './utils/swagger.js';
 
-const {mode} = commander.opts()
+// const {mode} = commander.opts()
 
 dotEnv.config()
 
@@ -36,22 +38,22 @@ app.use(cookieParser('P@l@braS3cr3t0'))
 
 app.use(cors())
 
-const swaggerOptions = {
-    definition:{
-        openapi:'3.0.1',
-        info:{
-            title:'Documentación de ecommerce',
-            description:'Esta es la documentación de ecommerce',
-        }
-    }, 
-    apis:[`${__dirname}/docs/**/*.yaml`]
-}
+// const swaggerOptions = {
+//     definition:{
+//         openapi:'3.0.1',
+//         info:{
+//             title:'Documentación de ecommerce',
+//             description:'Esta es la documentación de ecommerce',
+//         }
+//     }, 
+//     apis:[`${__dirname}/docs/**/*.yaml`]
+// }
 
-const specs = swaggerJSDoc(swaggerOptions)
+// const specs = swaggerJSDoc(swaggerOptions)
 
 app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
-const logger = mode === 'development' ? addLoggerDev : addLoggerProd
+// const logger = mode === 'development' ? addLoggerDev : addLoggerProd
 app.use(logger)
 
 const fileStore = FileStore(session);
@@ -70,7 +72,6 @@ app.use(session({
     saveUninitialized: false
 }))
 
-// initPassport()
 initializePassport()
 initPassportGitHub()
 passport.use(passport.initialize())

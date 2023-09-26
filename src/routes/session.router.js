@@ -9,11 +9,11 @@ const sessionController = new SessionController()
 
 const router = Router();
 
-router.post('/login', /*passport.authenticate('login', {failureRedirect:'/api/session/faillogin'})*/ sessionController.loginUser)
+router.post('/login', sessionController.loginUser)
 
 router.get('/faillogin', sessionController.failLogin)
 
-router.post('/register', /*passport.authenticate('register', {successRedirect:'/views/login', failureRedirect: '/api/session/failregister'})*/ sessionController.registerUser)
+router.post('/register', sessionController.registerUser)
 
 router.get('/failregister', sessionController.failRegister)
 

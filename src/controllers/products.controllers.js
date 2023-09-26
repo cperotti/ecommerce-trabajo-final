@@ -3,7 +3,6 @@ import { productService } from "../service/index.js";
 import { EError } from "../utils/CustomeError/EErrors.js";
 import CustomError from "../utils/CustomeError/customError.js";
 import { generatePoductErrorInfo } from "../utils/CustomeError/info.js";
-//import { uploader } from "../utils.js";
 
 class ProductsController {
     getProducts = async(req, res)=>{

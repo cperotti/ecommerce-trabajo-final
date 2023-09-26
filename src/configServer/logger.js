@@ -31,11 +31,6 @@ const loggerDev = winston.createLogger({
                 winston.format.simple()
             )
         }),
-        /*new winston.transports.File({
-            filename:'./errors.log', 
-            level:'error',
-            format: winston.format.simple()
-        })*/
     ]
 })
 

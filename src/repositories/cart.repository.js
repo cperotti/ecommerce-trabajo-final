@@ -1,5 +1,3 @@
-import CartDto from "../dto/cart.dto.js"
-
 class CartRepository{
     constructor(dao){
         this.dao = dao

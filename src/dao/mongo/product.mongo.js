@@ -1,5 +1,6 @@
 import { productModel } from "./models/product.model.js";
 import { userModel } from "./models/user.model.js";
+import { sendMail } from "../../utils/sendMail.js";
 
 class ProductManagerMongo {
     getProducts = async(limit=10, sort=null,status='', category='',query,page=1)=>{

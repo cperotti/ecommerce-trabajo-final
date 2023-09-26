@@ -86,9 +86,6 @@ export const initializePassport = () =>{
             return done(error)
         }
     }))
-
-    // passport.serializeUser()
-    // passport.deserializeUser()
 }
 
 

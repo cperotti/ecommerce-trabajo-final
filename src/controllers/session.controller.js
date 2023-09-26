@@ -1,7 +1,7 @@
 import { generateToken } from "../utils/generateTokenJwt.js"
 import { userService } from "../service/user.service.js"
-import SessionDto from "../dto/session.dto.js"
 import { cartService } from "../service/cart.service.js"
+import SessionDto from "../dto/session.dto.js"
 
 class SessionController {
     loginUser = async(req, res)=> {

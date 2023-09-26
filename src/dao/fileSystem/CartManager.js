@@ -13,7 +13,6 @@ export default class CartsManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error)
         }
     }
 
@@ -31,7 +30,6 @@ export default class CartsManager {
         }
         catch (error) {
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -43,7 +41,6 @@ export default class CartsManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -60,7 +57,6 @@ export default class CartsManager {
         }
         catch (error){
             req.logger.error(error)
-            //console.log(error);
         }
     }
 
@@ -113,7 +109,6 @@ export default class CartsManager {
         }
         catch (error) {
             req.logger.error(error)
-            //console.log(error)
         }
     }
 
