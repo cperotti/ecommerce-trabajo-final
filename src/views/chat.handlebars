@@ -1,6 +1,12 @@
 <div class="p-3">
+    <div class="d-flex justify-content-between">
+        <a href="/views/products">Volver a listado de productos</a>
+        <form action="/api/session/logout" method="get">
+            <button type="submit" class="btn btn-primary" >Cerrar sesión</button>
+        </form>
+        </div>
     <h1>Chat</h1>
-    <form action="/views/messages" method="post" onsubmit="onSubmit">
+    <form id="formMessage">
         <div class="mb-3">
             <label for="user" class="form-label">Ingresa tu email</label>
             <input type="email" class="form-control" name="user" id="user" placeholder="name@example.com">
@@ -10,28 +16,15 @@
             <textarea class="form-control" id="message" name="message" rows="3" placeholder="Escribe algo..."></textarea>
         </div>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+            <button type="submit" class="btn btn-primary mb-3" >Enviar</button>
         </div>
     </form>
     <div class="p-3">
         <h5>Mensajes</h5>
-        {{#if hasMessages}}
-        <ul id="message" class="list-group list-group-flush p-3">
-            {{#each messages}}
-            <li class="list-group-item">
-                <label>{{this.user}}:</label>
-                {{this.message}}
-            </li>
-            {{/each}}
+        <ul id="messages" class="list-group list-group-flush p-3">
+           
         </ul>
-        {{else}}
-        <h6>Aún no tenemos mensajes para mostrar</h6>
-        {{/if}}
     </div>     
 </div>
-<script>
-   function onSubmit(e){
-      e.preventDefault()
-      return false;
-   }
-</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>

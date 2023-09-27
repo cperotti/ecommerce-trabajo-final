@@ -1,41 +1,40 @@
+import { messageService, productService } from "../service/index.js";
+
 export default (io) => {
-    io.on("connection", (socket) => {
-      // console.log(socket.handshake.url);
-      console.log("nuevo socket connectado:", socket.id);
-  
-      // Send all messages to the client
-    //   const emitNotes = async () => {
-    //     const notes = await Note.find();
-    //     socket.emit("server:loadnotes", notes);
-    //   };
-    //   emitNotes();
-  
-    //   socket.on("client:newnote", async (data) => {
-    //     const newNote = new Note(data);
-    //     const savedNote = await newNote.save();
-    //     io.emit("server:newnote", savedNote);
-    //   });
-  
-    //   socket.on("client:deletenote", async (noteId) => {
-    //     await Note.findByIdAndDelete(noteId);
-    //     emitNotes();
-    //   });
-  
-    //   socket.on("client:getnote", async (noteId) => {
-    //     const note = await Note.findById(noteId);
-    //     socket.emit("server:selectednote", note);
-    //   });
-  
-    //   socket.on("client:updatenote", async (updatedNote) => {
-    //     await Note.findByIdAndUpdate(updatedNote._id, {
-    //       title: updatedNote.title,
-    //       description: updatedNote.description,
-    //     });
-    //     emitNotes();
-    //   });
-  
-    //   socket.on("disconnect", () => {
-    //     console.log(socket.id, "disconnected");
-    //   });
-    });
+    io.on('connection', socket=>{
+        console.log('Nuevo cliente conectado')
+    
+        productService.getProducts().then((response)=>{
+            socket.emit('products', response.docs )
+        })
+        .catch(error => console.log(error))
+    
+        socket.on('newProduct', dataProduct=>{
+            productService.createProduct(dataProduct).then(response =>{
+                socket.emit('response', response)
+            })
+            .catch(error => console.log(error))
+        })
+    
+        socket.on('deleteProduct', id =>{
+            productService.deleteProduct(id).then(response =>{
+                socket.emit('response', response)
+            })
+            .catch(error => console.log(error))
+        })
+
+        messageService.getMessages().then((response)=>{
+            socket.emit('messages', response)
+        })
+        .catch(error => console.log(error))
+
+        socket.on('newMessage', data => {
+            messageService.createMessage(data).then(()=>{
+                messageService.getMessages().then(getresponse=>{
+                    socket.emit('messages', getresponse)
+                })
+            })
+            .catch(error=> console.log(error))
+        })
+    })
   };

@@ -1,38 +1,6 @@
-import { messageService, productService, cartService, userService } from "../service/index.js";
+import {productService, cartService, userService } from "../service/index.js";
 
 class ViewsController {
-    getMessages = async(req, res)=>{
-        try{
-            const messages = await messageService.getMessages()
-            let data = {
-                title: 'Mensajes',
-                messages,
-                hasMessages: messages.length > 0
-            }
-            res.render('chat', data)
-        }catch (error){
-            req.logger.error(error)
-        }
-    }
-
-    createMessage = async(req, res)=>{
-        try{
-            const message= req.body;
-            await messageService.createMessage(message)
-    
-            const messages = await messageService.getMessages()
-            let data = {
-                title: 'Mensajes',
-                messages,
-                hasMessages: messages.length > 0
-            }
-    
-            res.render('chat', data)
-         
-        }catch (error){
-            req.logger.error(error)
-        }
-    }
 
     getProductData = async(req,res)=>{
         try {
@@ -109,6 +77,18 @@ class ViewsController {
             hasUsers: response,
             linkProductos: '/views/products'
         })
+    }
+
+    getRealTimeProducts= async(req, res)=>{
+        let title = {
+            generalTitle: 'Productos en tiempo real',
+            listTitle: 'Listado',
+        }
+        res.render('realTimeProducts', title)
+    }
+
+    getChat = async(req, res)=>{
+        res.render('chat',{})
     }
 }
 

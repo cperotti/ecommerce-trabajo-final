@@ -41,7 +41,7 @@ class ProductManagerMongo {
 
             if(findProduct){
                 const user = await userModel.findOne({_id: findProduct.createBy})
-                if(user.premiun){
+                if(user && user.premiun){
                     let subject = 'Ecommerce'
                     let html = `<div>
                         <h1>Hola!, si te llegó este mail es para informate que el producto ${findProduct.title} creado por vos fue eliminado </h1>
