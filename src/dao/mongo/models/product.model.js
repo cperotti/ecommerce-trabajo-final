@@ -35,7 +35,8 @@ const productSchema = new Schema({
         required: true,
     },
     createBy:{
-        type: String
+        type: String,
+        default:null
     }
 })
 

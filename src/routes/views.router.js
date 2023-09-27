@@ -7,13 +7,13 @@ const viewsController = new ViewsController();
 
 const router = Router();
 
-router.get('/messages', viewsController.getMessages)
-router.post('/messages', passportAuth('jwt'), authorizaton('user'), viewsController.createMessage)
 router.get('/products', passportAuth('jwt'),viewsController.getProductData)
-router.get('/products/:pid', viewsController.getProductById)
+router.get('/products/:pid',passportAuth('jwt'), viewsController.getProductById)
 router.get('/carts/:cid', passportAuth('jwt'), authorizaton('user'), viewsController.getCartData)
 router.get('/login', viewsController.getLoginView)
 router.get('/register', viewsController.getRegisterView)
 router.get('/users', passportAuth('jwt'), authorizaton('admin'), viewsController.getUsers)
+router.get('/realtimeproducts', passportAuth('jwt'),authorizaton('admin'), viewsController.getRealTimeProducts)
+router.get('/chat',passportAuth('jwt'), viewsController.getChat);
 
 export default router;

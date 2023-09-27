@@ -21,7 +21,9 @@
                 <div class="d-flex flex-row">
                     <h5 class="me-2">Cantidad:</h5><span>{{detail.stock}}</span>
                 </div>
-                <Button type="button" class="btn btn-primary btn-sm">Agregar al carrito</Button>
+                <form action={{linkAddProductToCart}} method="post">
+                    <Button type="submit" class="btn btn-primary btn-sm">Agregar al carrito</Button>
+                </form>
             </div>
             </div>
         </div>
