@@ -14,6 +14,8 @@ import dotEnv from 'dotenv';
 import swaggerUiExpress from 'swagger-ui-express';
 import cors from 'cors'
 import { specs } from './utils/swagger.js';
+import { Server as websocketserver } from 'socket.io';
+import sockets from './sockets/sockets.js';
 
 dotEnv.config()
 
@@ -71,4 +73,8 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 8080
 
-app.listen(PORT, ()=> console.log('servidor arriba'));
+const httpserver = app.listen(PORT, ()=> console.log('servidor arriba'));
+
+const io = new websocketserver(httpserver)
+
+sockets(io)
