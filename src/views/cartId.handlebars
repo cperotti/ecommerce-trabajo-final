@@ -28,7 +28,9 @@
   </tbody>
 </table>
 <div class="d-flex justify-content-end m-5">
-  <button type="button" class="btn btn-primary">Finalizar compra</button>
+  <form action={{linkpurchase}} method="post">
+    <button type="submit" class="btn btn-primary">Finalizar compra</button>
+  </form>
 </div>
 {{else}}
     <p class="text-center m-4">Aún no hay productos cargados en el carrito</p>

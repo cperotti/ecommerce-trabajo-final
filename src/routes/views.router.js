@@ -8,7 +8,7 @@ const viewsController = new ViewsController();
 const router = Router();
 
 router.get('/products', passportAuth('jwt'),viewsController.getProductData)
-router.get('/products/:pid', viewsController.getProductById)
+router.get('/products/:pid',passportAuth('jwt'), viewsController.getProductById)
 router.get('/carts/:cid', passportAuth('jwt'), authorizaton('user'), viewsController.getCartData)
 router.get('/login', viewsController.getLoginView)
 router.get('/register', viewsController.getRegisterView)

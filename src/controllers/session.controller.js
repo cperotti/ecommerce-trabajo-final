@@ -7,6 +7,7 @@ class SessionController {
     loginUser = async(req, res)=> {
         try {
             const user = await userService.validateUser({email: req.body.email})
+
             if(user){
             const dataUser={
                 id: user._id,
